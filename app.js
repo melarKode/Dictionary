@@ -18,5 +18,6 @@ app.use(express.static('views'));
 
 //Routes
 app.use('/', require('./routes/index'));
+app.use('/word', require('./routes/word'));
 
 app.listen(PORT, ()=>console.log(`Listening to port ${PORT}`));
