@@ -3,19 +3,26 @@
     <div class="row">
         <div col="col-md-6 m-auto">
             <h3 class ="text-centermb-3">Enter your word here:</h3>
-            <form action="definition.html">
-            <div class="form-group">
-                <input type="text" name="search" id="search" class="form-control form-control-lg" placeholder="Enter word">
-            </div>
-            <div id="match-list"></div>
-            <div class="submit">
-                <input type="submit" id="submit" placeholder="Submit">
-            </div>
+            <form onsubmit="search_navigate();return false">
+                <div class="form-group">
+                    <input type="text" name="search" id="search" class="form-control form-control-lg" placeholder="Enter word">
+                </div>
+                <div id="match-list"></div>
+                <div class="submit">
+                    <input type="submit" id="submit" placeholder="Submit">
+                </div>
             </form>
         </div>
     </div>
 </div>
 <script>
+    function search_navigate(){
+        var obj = document.getElementById('search');
+        var keyword = obj.value;
+        var dst = "word/"+keyword;
+        window.location = dst;
+    }
+
     window.onload=function(){
         const search = document.getElementById('search');
         search.addEventListener('input', ()=> searchWord(search.value));
