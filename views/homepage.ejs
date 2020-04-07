@@ -1,0 +1,30 @@
+<h1>Dictionary using Node JS</h1>
+<div class = "container mt-5">
+    <div class="row">
+        <div col="col-md-6 m-auto">
+            <h3 class ="text-centermb-3">Enter your word here:</h3>
+            <form action="definition.html">
+            <div class="form-group">
+                <input type="text" name="search" id="search" class="form-control form-control-lg" placeholder="Enter word">
+            </div>
+            <div id="match-list"></div>
+            <div class="submit">
+                <input type="submit" id="submit" placeholder="Submit">
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    window.onload=function(){
+        const search = document.getElementById('search');
+        search.addEventListener('input', ()=> searchWord(search.value));
+    }
+    
+    const matchList = document.getElementById('match-list');
+
+    //Search dictionary.json and filter it
+    const searchWord = async searchText =>{
+        console.log(JSON.stringify(dict));
+    }
+</script>
