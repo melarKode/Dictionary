@@ -1,0 +1,13 @@
+<% if(typeof errors != 'undefined') { %>
+    <div class="card">
+        <div class="card-header">
+          <i>  </i>
+        </div>
+    <div class="card-body">
+        <blockquote class="blockquote mb-0">
+            <h1><%= errors.msg %></h1>
+          <footer class="blockquote-footer"></footer>
+        </blockquote>
+      </div>
+    </div>
+<%} %>

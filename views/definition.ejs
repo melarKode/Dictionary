@@ -1,0 +1,78 @@
+<form onsubmit="search_navigate();return false">
+    <div class="form-group">
+        <input type="text" name="search" id="search" class="form-control form-control-lg" autocomplete="off" placeholder="Enter word" required="true">
+    </div>
+    <div id="match-list"></div>
+    <div class="submit">
+        <input type="submit" id="submit" placeholder="Submit">
+    </div>
+</form>
+<br><br>
+<%- include('./partials/errors') %>
+<br><br>
+<h1><%=word%></h1>
+<hr>
+<br>
+<% for(let i=0; i<def.length; i++){ %>
+<div class="card">
+    <div class="card-header">
+      <i> <%= def[i][0] %> </i>
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <p><%= def[i][1]%></p>
+        <footer class="blockquote-footer"><%= def[i][3]%></footer>
+      </blockquote>
+    </div>
+  </div>
+  <br>
+<% } %>
+<div class="card" style="width:34rem; float: left">
+    <div class="card-header">
+      <i>Synonyms</i>
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+          <% for(let i=0; i<syno.length; i++) { %>
+        <%=syno[i]%><br>
+        <%}%>
+        <footer class="blockquote-footer"></footer>
+      </blockquote>
+    </div>
+  </div>
+  <div class="card" style="width:34rem; float: right">
+    <div class="card-header">
+      <i>Antonyms</i>
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+          <% for(let i=0; i<anto.length; i++) { %>
+        <%=anto[i]%><br>
+        <%}%>
+        <footer class="blockquote-footer"></footer>
+      </blockquote>
+    </div>
+  </div>
+
+
+
+<script>
+    function search_navigate(){
+        var obj = document.getElementById('search');
+        var keyword = obj.value;
+        var dst = keyword;
+        window.location = dst;
+    }
+
+    window.onload=function(){
+        const search = document.getElementById('search');
+        search.addEventListener('input', ()=> searchWord(search.value));
+    }
+    
+    const matchList = document.getElementById('match-list');
+
+    //Search dictionary.json and filter it
+    const searchWord = async searchText =>{
+        console.log(JSON.stringify(dict));
+    }
+</script>
