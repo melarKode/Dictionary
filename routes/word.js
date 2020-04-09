@@ -7,13 +7,14 @@ router.get('/:word',(req,res)=>{
     var errors = []; 
     var word = req.params.word.toUpperCase();
     var letter = word[0].toUpperCase();
+    var exc = req.params.word[0];
     if(letter.toLowerCase() == letter.toUpperCase())
     {
         errors.push({msg: `No results found for ${req.params.word}`});
     }
     if(errors.length>0)
     {
-        res.render('definition', {errors : errors[0], word:'', syno: [], anto: [], def: ''});
+        res.render('definition', {errors : errors[0], word:'', syno: ['N/A'], anto: ['N/A'], def: ''});
     }else{
         test = test+ letter+'.json';
         var dict =JSON.parse(fs.readFileSync(test));

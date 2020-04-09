@@ -1,13 +1,16 @@
+<div class="input-bar">
+  <div class="input-bar-item width100">
 <form onsubmit="search_navigate();return false">
-    <div class="form-group">
-        <input type="text" name="search" id="search" class="form-control form-control-lg" autocomplete="off" placeholder="Enter word" required="true">
-    </div>
-    <div id="match-list"></div>
-    <div class="submit">
-        <input type="submit" id="submit" placeholder="Submit">
-    </div>
+    <div class="input-group">
+        <input type="text" name="search" id="search" class="form-control width100 mt-3" autocomplete="off" placeholder="Enter word" required="true">
+    <span class="input-group-btn">
+      <button type="submit" class="btn btn-primary mt-3" value="Search">Search</button>
+    </span>
+  </div>
 </form>
-<br><br>
+</div>
+</div>
+<br>
 <%- include('./partials/errors') %>
 <br><br>
 <h1><%=word%></h1>
@@ -16,7 +19,7 @@
 <% for(let i=0; i<def.length; i++){ %>
 <div class="card">
     <div class="card-header">
-      <i> <%= def[i][0] %> </i>
+      <i><div class="hover-underline-animation"><%= def[i][0] %></div></i>
     </div>
     <div class="card-body">
       <blockquote class="blockquote mb-0">
@@ -27,27 +30,27 @@
   </div>
   <br>
 <% } %>
-<div class="card" style="width:34rem; float: left">
+<div class="card" style="width:45%; float: left">
     <div class="card-header">
-      <i>Synonyms</i>
+      <i><div class="hover-underline-animation">Synonyms</div></i>
     </div>
     <div class="card-body">
       <blockquote class="blockquote mb-0">
           <% for(let i=0; i<syno.length; i++) { %>
-        <%=syno[i]%><br>
+            <div class="hover-underline-animation"><%=syno[i]%></div><br>
         <%}%>
         <footer class="blockquote-footer"></footer>
       </blockquote>
     </div>
   </div>
-  <div class="card" style="width:34rem; float: right">
+  <div class="card" style="width:45%; float: right">
     <div class="card-header">
-      <i>Antonyms</i>
+      <i><div class="hover-underline-animation">Antonyms</div></i>
     </div>
     <div class="card-body">
       <blockquote class="blockquote mb-0">
           <% for(let i=0; i<anto.length; i++) { %>
-        <%=anto[i]%><br>
+            <div class="hover-underline-animation"><%=anto[i]%></div><br>
         <%}%>
         <footer class="blockquote-footer"></footer>
       </blockquote>
@@ -57,6 +60,12 @@
 
 
 <script>
+  var checker= document.getElementsByClassName('hover-underline-animation');
+  for(var word=0; word<checker.length; word++){
+    var limiter = checker[word].innerText;
+    var link = "localhost:3000/word/"+limiter;
+  };
+  console.log(checker);
     function search_navigate(){
         var obj = document.getElementById('search');
         var keyword = obj.value;

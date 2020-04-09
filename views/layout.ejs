@@ -1,8 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        .hover-underline-animation {
+        display: inline-block;
+        position: relative;
+        color: #000000;
+        }
+
+        .hover-underline-animation::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #0087ca;
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+        }
+
+        .hover-underline-animation:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+        }
+    </style>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0">
     <script src="https://kit.fontawesome.com/6946d2c87e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css" type="text/css">
     <title>Dictionary</title>
